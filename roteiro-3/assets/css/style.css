@@ -1,24 +1,40 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+font-family: Arial, sans-serif;
+margin: 0;
+background-color: #f2f2f2;
+}    
+
+.container {
+width: 80%;
+margin: 0 auto;
 }
 
 header {
-    background-color: #e42427;
-    color: rgb(255, 255, 255);
-    padding: 20px;
+background-color: #003366;
+color: white;
+padding: 20px;
+text-align: center;
 }
 
 nav ul {
-    list-style: none;
+list-style: none;
+padding: 0;
+text-align: center;
+}
+/* objeto replicado: herança. UL= unorder list */
+
+nav li {  
+display: inline;
+margin: 0 15px;
+}
+/* li é um item dentro da lista */
+
+
+nav a {
+text-decoration: none;
+color: #003366;
+font-weight: bold;
 }
 
-nav li {
-    display: inline;
-    margin-right: 15px;
-}
-
-footer {
-    margin-top: 30px;
-    font-size: 18px;
-}
+nav a:hover {
+color: #ff6600;
