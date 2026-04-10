@@ -1,0 +1,164 @@
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+background-color: #f2f2f2;
+}    
+
+.container {
+width: 80%;
+margin: 0 auto;
+}
+
+header {
+background-color: #003366;
+color: white;
+padding: 20px;
+text-align: center;
+}
+
+nav ul {
+list-style: none;
+padding: 0;
+text-align: center;
+}
+/* objeto replicado: herança. UL= unorder list */
+
+/* nav li {  
+display: inline;
+margin: 0 15px;
+} */
+/* li é um item dentro da lista */
+
+
+nav a {
+text-decoration: none;
+color: #003366;
+font-weight: bold;
+}
+/* a são os links. Todos os links dentro do a vão aparecer da cor especificada */
+
+nav a:hover {
+color: #ff6600;
+font-size: 25px;
+/* background-color: blueviolet;  */
+/* aqui está sendo trabalhando o comportamento. Quando o mouse estiver por cima da palavra ele vai aparecer dessa cor. Isso é o hover */
+
+/* https://www.w3schools.com/ para criação de páginas */
+}
+section {
+background-color: white;
+padding: 20px;
+margin-top: 20px;
+border-radius: 8px;
+box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+}
+
+footer {
+margin-top: 30px;
+padding: 15px;
+text-align: center;
+font-size: 14px;
+}
+
+.cards {
+    display: flex;
+    gap: 20px; 
+    /* border-radius: 8px; */
+    box-shadow: 0px 2px 6px rgba(239, 101, 10, 0.15);
+    justify-content: center;
+    text-align: center;
+    }
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: #f2f2f2;  
+    padding: 20px;
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);   
+    text-align: center;
+}
+
+.card img {
+width: 100%;
+border-radius: 5px;
+margin-bottom: 10px;
+}
+
+.card:hover {
+transform: translateY(-5px);
+box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+transition: all 0.3s ease;
+}
+
+.cards:hover {
+/* transform:skewX(30deg); */
+transform: rotate(3deg); 
+box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.2);
+background-color: #003366;
+transition: all 0.3s ease;
+}
+
+
+/* @media(max-width: 768px){
+.cards{
+flex-direction: column;
+align-items: center;
+}
+} */
+/* serve para adaptar a tela para uso em telas menores */
+
+form {
+display: flex;  
+flex-direction: column;
+gap: 15px;
+background-color: white;
+padding: 20px;
+border-radius: 20px;
+box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+max-width:500px;
+margin: 20px auto;
+
+/* para alterar borda ou sombreamento */
+
+input, textarea, select {
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 14px;
+}
+
+input:focus, textarea:focus, select:focus {
+outline: none;
+border-color: #003366;
+box-shadow: 0 0 20px rgba(0,51,102,0.3);
+}
+
+
+button {
+background-color: #003366;
+color: white;
+padding: 12px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+button:hover {
+background-color: #e23ad4;
+}
+
+input:valid {
+border-color: green;
+}
+input:invalid {
+border-color: red;
+}
+
+@media(max-width: 768px){
+form {
+width: 90%;
+}
+}
+
