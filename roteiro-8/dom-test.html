@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="titulo">Olá Mundo!</h1>
+    <button onclick="mudarTexto()">Clique Aqui</button> 
+
+    <ul id="minhaLista"></ul>
+    <button id="add">Adicionar Item</button>
+
+    <h2 id="contador">0</h2>  
+    <!-- Vai mostrar contador mais um número zero -->
+    <button id="btnSoma">Contar +1</button>
+
+    <img id="lampada" src="lampada.desligada.png" style="width:100px">
+    <button id="btnInterruptor">Ligar/Desligar</button>
+
+
+    <!-- Aqui começa a parte do jogo de adivinhação -->
+    <input type="number" id="palpite" placeholder="0 a 10">
+    <button id="btnChutar">Chutar!</button>
+    <p id="feedback"></p>
+
+
+<!-- Aqui começa o botão fugitivo -->
+<!-- span é usado para fazer quebra de linha -->
+
+    <p>Erros: <span id="contadorErros">0</span></p>
+    <button id="fugitivo" style="position: absolute; left: 50%; top: 50%;">
+    Pegue-me!
+    </button>
+
+
+<!-- Aqui começa o jogo de pedra, papel, tesoura -->
+
+<button onclick="jogar('PEDRA')">&#9994 PEDRA</button>
+<button onclick="jogar('PAPEL')">&#X270B PAPEL</button>
+<button onclick="jogar('TESOURA')">&#X270C TESOURA</button>
+<h3 id="resultadoJogo">Escolha um!</h3>
+
+
+
+
+
+<!-- Deixar a parte HTML na parte de cima para ficar organizado -->
+
+
+    <script>
+
+//==================================================================
+
+
+    const lista = document.getElementById("minhaLista");
+    const botao = document.getElementById("add");
+    let valor = 0;  //definindo variável valor a partir do zero
+    const titulo = document.getElementById("titulo"); //altera o texto do elemento para outro valor
+    const display = document.getElementById("contador");
+    const interruptor = document.getElementById("btnSoma");
+    
+    // deixar na parte de cima do scrip o que será modificado e na parte inferior somente as funções
+    //botao addEventListener para controlar eventos = escutador, é um ouvinte que vai ouvir quando alguém der um clique no botão
+
+
+    botao.addEventListener("click", () => {
+    // 1. Criar o elemento
+    const novoItem = document.createElement("li");
+        // 2. Dar conteúdo ao elemento
+    novoItem.innerText = "Novo Item na Lista";
+    // 3. Adicionar na página texto acima
+    lista.appendChild(novoItem);
+    });
+
+    function mudarTexto() {   //cria variável título vai na página e asssume o controle do objeto
+    titulo.innerText = "JavaScript funcionando!"; //depois acesso novamente o título e faz nova alteração
+    titulo.style.color = "blue";
+    }
+
+
+    interruptor.addEventListener("click", () => {
+        valor++; // incrementa o valor em 1
+        display.innerText = valor; //atualiza o texto do elemento
+
+    });
+
+    const img = document.getElementById("lampada");
+    let acesa = false;
+    document.getElementById("btnInterruptor").addEventListener("click", () => {
+    acesa = !acesa;
+    img.src = acesa ? "lampada.png" : "lampada.desligada.png";
+    });
+
+//código do jogo de adivinhação
+
+    const segredo = Math.floor(Math.random() * 11); //math biblioteca matematico do Javascript
+    const campo = document.getElementById("palpite");
+    const texto = document.getElementById("feedback");
+    document.getElementById("btnChutar").addEventListener("click", () => {
+    const chute = Number(campo.value); //cria constante chuter
+    if (chute === segredo) {   //os três iguais comparar número com número
+    texto.innerText = " Parabéns! Você acertou!";
+    texto.style.color = "green";
+    } else {
+    texto.innerText = chute > segredo ? "Muito alto!" : "Muito baixo!"; // exibe se o chute foi alto ou baixo, relacionado a operador boleano.
+    texto.style.color = "red";
+    }
+    });
+
+
+//código do jogo do botão fugitivo
+
+    const btn = document.getElementById("fugitivo");
+    const placar = document.getElementById("contadorErros");
+    let erros = 0;
+    btn.addEventListener("mouseover", () => {  //incrementa erros
+    erros++;
+    placar.innerText = erros;  //joga dentro do texto do placar o número de erros
+    // Mudar posição aleatoriamente
+    const x = Math.random() * (window.innerWidth - 100); //lógica para ir mudando a posição
+    const y = Math.random() * (window.innerHeight - 50);
+    btn.style.left = `${x}px`;
+    btn.style.top = `${y}px`;
+    });
+    btn.addEventListener("click", () => alert(" Você me pegou!"));
+
+
+// botões do pedra, papel, tesoura (INSERÇÃO DA FUNÇÃO)================================================================
+
+    const opcoes = ['PEDRA', 'PAPEL', 'TESOURA'];  //constantes array com 3 strings
+    
+    function jogar(player) {  
+        const pc = opcoes[Math.floor(Math.random() * 3)];  //define a escolha que o computador vai fazer
+        const res = document.getElementById("resultadoJogo"); //criando varíavel res e colocando um resultado para ela
+    
+        if (player === pc) {    //checa se a escolha do computador é igual a escolha do jogador
+            res.innerText = `Empate! Ambos escolheram ${pc}`; //mensagem de retorno no caso de empate
+        } else if (  
+            (player === 'PEDRA' && pc === 'TESOURA') ||
+            (player === 'PAPEL' && pc === 'PEDRA') ||
+            (player === 'TESOURA' && pc === 'PAPEL')
+        ) {
+            res.innerText = `Você Ganhou! ${player} vence ${pc}`;
+        } else {
+            res.innerText = `Você Perdeu! ${pc} vence ${player}`;
+        }
+    }
+
+
+
+
+
+
+    </script>
+    
+
+
+
+</body>
+</html>
