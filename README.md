@@ -117,7 +117,7 @@ Durante a disciplina foram desenvolvidas competências relacionadas a:
 
 ---
 
-## Autor
+## Autora
 
 **Sabrina Moro Villela Pacheco**
 
